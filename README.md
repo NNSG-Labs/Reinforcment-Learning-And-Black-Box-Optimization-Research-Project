@@ -12,6 +12,7 @@ Any problem that can be formulated as a state transition and reward function (i.
 
 One of the simple algorithms you'll be introduced to when starting RL is SARSA. 
 The figure below is the algorithm as described in Richard Sutton's RL textbook.
+
 ![SARSA](https://raw.githubusercontent.com/NNSG-Labs/Reinforcment-Learning-And-Black-Box-Optimization-Research-Project/master/figs/sarsa.png)
 
 We see that SARSA as described in this figure has two tunable hyperparameters: the exploration randomness (epsilon), and the learning rate (alpha).
@@ -21,7 +22,9 @@ Finding the values for these hyperparameters which lead to the best performance 
 
 Given an environment and a reinforcement learning algorithm, how do we determine how good the algorithm is?
 When we run the algorithm on the environment, we get back a sequence of rewards, which we can plot out to obtain a figure like the one below.
+
 ![SARSA](https://raw.githubusercontent.com/NNSG-Labs/Reinforcment-Learning-And-Black-Box-Optimization-Research-Project/master/figs/perf_vs_time.png)
+
 Given two of these curves, it's not immediately obvious which algorithm is better uness one algorithm is better than the other at every time step.
 We can compute several different values, all of which are valid performance measures.
 Some examples are:
@@ -38,7 +41,9 @@ Some examples are:
 Hyperparameter optimization is a very expensive process.
 It typically involves evaluating the algorithm on many different hyperparameters, then choosing the one with the best performance.
 If we plot out the performance with respect to one of the hyperparameters, we will probably see like this:
+
 ![SARSA](https://raw.githubusercontent.com/NNSG-Labs/Reinforcment-Learning-And-Black-Box-Optimization-Research-Project/master/figs/perf_vs_param.png)
+
 One thing we can probably safely assume about the performance vs hyperparameter curve is that it is continuous or smooth.
 That is, if we change the hyperparameter a little, we expect a small change in the performance.
 With that assumption, we can then ask, how smooth is it?
@@ -48,7 +53,9 @@ Knowing these values ahead of time will allow for a much more efficient hyperpar
 Bayesian optimization is a popular way of doing hyperparameter optimization.
 The essential idea is that we evaluate the algorithm on a small set of hyperparameters, then the performance vs hyperparameter curve is approximated using a Gaussian process.
 An example of a Gaussian process with two points is shown in the figure below.
+
 ![SARSA](https://raw.githubusercontent.com/NNSG-Labs/Reinforcment-Learning-And-Black-Box-Optimization-Research-Project/master/figs/gp.png)
+
 The nice thing about Gaussian processes is that they make use of a smoothness assumption to give us an uncertainty estimate.
 So given an arbitrary set of hyperparameters, we can use this Gaussian process to compute an upper and lower bound on the performance.
 This allows us to search the space more efficiently, because we can focus on hyperparameters that are likely to give us better results.
